@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery Vault</title>
+</head>
+<body>
+    <h1>Gallery Vault</h1>
+    <a href="/upload">Upload Image</a>
+    <div style="display: flex; flex-wrap: wrap;">
+        {% for image in images %}
+        <div style="margin: 10px;">
+            <img src="{{ url_for('static', filename='uploads/' + image) }}" alt="Image" width="200">
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
