@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -12,6 +12,195 @@
         {% for image in images %}
         <div style="margin: 10px;">
             <img src="{{ url_for('static', filename='uploads/' + image) }}" alt="Image" width="200">
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html> -->
+<!-- 
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery Vault</title>
+    <style>
+        /* General body styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        /* Title styling */
+        h1 {
+            color: #333;
+            font-size: 2.5em;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        /* Upload link button styling */
+        a {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 1.2em;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            transition: background-color 0.3s;
+        }
+
+        a:hover {
+            background-color: #45a049;
+        }
+
+        /* Gallery container styles */
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); /* Responsive grid */
+            gap: 20px;
+            padding: 20px;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        /* Each image item container */
+        .image-item {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .image-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .image-item img {
+            width: 100%;
+            height: auto;
+            border-bottom: 2px solid #f1f1f1;
+        }
+    </style>
+</head>
+<body>
+    <h1>Gallery Vault</h1>
+    <a href="/upload">Upload Image</a>
+    <div class="gallery-container">
+        {% for image in images %}
+        <div class="image-item">
+            <img src="{{ url_for('static', filename='uploads/' + image) }}" alt="Image">
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
+ -->
+
+
+
+
+
+
+
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery Vault</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 2.5em;
+            margin: 20px;
+        }
+
+        a {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 1.2em;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+
+        a:hover {
+            background-color: #45a049;
+        }
+
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        .image-item {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .image-item img {
+            width: 100%;
+            border-bottom: 2px solid #f1f1f1;
+        }
+
+        .delete-button {
+            background-color: #FF4B4B;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 10px 0;
+            font-size: 1em;
+        }
+
+        .delete-button:hover {
+            background-color: #FF0000;
+        }
+    </style>
+</head>
+<body>
+    <h1>Gallery Vault</h1>
+    <a href="/upload">Upload Image</a>
+    <div class="gallery-container">
+        {% for image in images %}
+        <div class="image-item">
+            <img src="{{ url_for('static', filename='uploads/' + image) }}" alt="Image">
+            <form action="/delete/{{ image }}" method="post">
+                <button class="delete-button" type="submit">Delete</button>
+            </form>
         </div>
         {% endfor %}
     </div>
